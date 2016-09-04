@@ -51,8 +51,8 @@ class Image extends Component {
                                 FB.ui({
                                     method: 'share',
                                     display: 'popup',
-                                    hashtag:'#facesOfDaiict #nostalgic',
-                                    quote : 'This is how I used to look :)',
+                                    hashtag:'#facesOfDaiict',
+                                    quote : `https://91aman.github.io/faces-of-daiict/?klass=${klass}&batch=${batch}&id=${pad(iter,3)}`,
                                     href: `https://91aman.github.io/faces-of-daiict/?klass=${klass}&batch=${batch}&id=${pad(iter,3)}`
                                 }, function(response){});
                             }}
