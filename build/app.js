@@ -19878,6 +19878,8 @@
 	                            FB.ui({
 	                                method: 'share',
 	                                display: 'popup',
+	                                hashtag: '#facesOfDaiict #nostalgic',
+	                                quote: 'This is how I used to look :)',
 	                                href: 'asdasd.com/' + klass + batch + pad(iter, 3)
 	                            }, function (response) {});
 	                        },
