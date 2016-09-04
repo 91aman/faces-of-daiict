@@ -53,6 +53,9 @@ class Image extends Component {
                                     display: 'popup',
                                     hashtag:'#facesOfDaiict',
                                     quote : `https://91aman.github.io/faces-of-daiict/?klass=${klass}&batch=${batch}&id=${pad(iter,3)}`,
+                                    post : `https://91aman.github.io/faces-of-daiict/?klass=${klass}&batch=${batch}&id=${pad(iter,3)}`,
+                                    text : `https://91aman.github.io/faces-of-daiict/?klass=${klass}&batch=${batch}&id=${pad(iter,3)}`,
+                                    message : `https://91aman.github.io/faces-of-daiict/?klass=${klass}&batch=${batch}&id=${pad(iter,3)}`,
                                     href: `https://91aman.github.io/faces-of-daiict/?klass=${klass}&batch=${batch}&id=${pad(iter,3)}`
                                 }, function(response){});
                             }}
