@@ -21,7 +21,7 @@ function pad(str, max) {
 }
 
 function onSearchChange(key, value) {
-    this.setState({[key]: value});
+    this.setState({[key]: value, id: undefined});
 }
 
 class Image extends Component {
@@ -59,17 +59,13 @@ class Image extends Component {
                             }}
                             style={{
                             float: 'right',
-                            height: '9px',
-                            width: '9px',
+                            height: selected? '18px' :'9px',
+                            width: selected ? '18px' :'9px',
                             fill: 'white'
                         }}/>
                     </div>
                 </div>
         )
-    }
-
-    componentDidMount(){
-        this.props.selected && window.setTimeout(() => this.refs['container'].scrollIntoView({block: "end", behavior: "smooth"}) , 1000);
     }
 }
 
@@ -137,25 +133,28 @@ class App extends Component {
                     </SelectField>
                 </section>
                 <section className="result-wrap">
-                    {_.times((ClassSize[klass] || MAX_SIZE)[batch] + 1, (iter) => {
+                    {
+                        id && <div className="query-result">
+                            <Image
+                            key={`1${klass}${batch}${id}`}
+                            klass={klass}
+                            batch={batch}
+                            selected
+                            iter={+id}
+                        /></div>
+                    }
+                    <div className="batch-cont">{_.times((ClassSize[klass] || MAX_SIZE)[batch] + 1, (iter) => {
                         return <Image
                             key={`${klass}${batch}${iter}`}
                             klass={klass}
                             batch={batch}
                             iter={iter}
-                            selected={id && iter === +id}
                         />
-                    })}
+                    })}</div>
                 </section>
             </div>
 
         );
-    }
-
-    componentDidMount() {
-        window.setTimeout(() => {
-            this.setState({id: ''})
-        }, 10000)
     }
 }
 

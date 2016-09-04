@@ -33,14 +33,23 @@ html, body {
   background: #C5CAE9;
 }
 
+.query-result{
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 37.5px;
+}
+
 .result-wrap {
   height: calc(100% - 144px);
   overflow: auto;
   text-align: center;
   position: relative;
-  padding: 75px 61px;
+  padding: 37.5px 61px;
   box-sizing: border-box;
   background: #E8EAF6;
+}
+
+.batch-cont{
+  padding:40px 0;
 }
 
 .prof-img-wrap {
@@ -51,12 +60,28 @@ html, body {
     display: none !important;
   }
 
-  &:hover, &.selected {
+  &:not(.selected):hover{
     transform: scale(3);
     z-index: 1;
 
     .share-icon {
       display: block !important;
+    }
+  }
+
+  &.selected{
+    .share-icon {
+      display: block !important;
+    }
+
+    .prof-img{
+      height: 200px;
+      width: 200px;
+    }
+
+    .prof-img-value{
+      font-size: 16px;
+      padding: 5px 8px;
     }
   }
 }

@@ -19834,7 +19834,9 @@
 	}
 
 	function onSearchChange(key, value) {
-	    this.setState(_defineProperty({}, key, value));
+	    var _setState;
+
+	    this.setState((_setState = {}, _defineProperty(_setState, key, value), _defineProperty(_setState, 'id', undefined), _setState));
 	}
 
 	var Image = function (_Component) {
@@ -19892,21 +19894,12 @@
 	                        },
 	                        style: {
 	                            float: 'right',
-	                            height: '9px',
-	                            width: '9px',
+	                            height: selected ? '18px' : '9px',
+	                            width: selected ? '18px' : '9px',
 	                            fill: 'white'
 	                        } })
 	                )
 	            );
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this3 = this;
-
-	            this.props.selected && window.setTimeout(function () {
-	                return _this3.refs['container'].scrollIntoView({ block: "end", behavior: "smooth" });
-	            }, 1000);
 	        }
 	    }]);
 
@@ -19919,7 +19912,7 @@
 	    function App(props) {
 	        _classCallCheck(this, App);
 
-	        var _this4 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	        var _this3 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
 	        var query = window.location.search.slice(1).split('=')[1] || '';
 
@@ -19929,12 +19922,12 @@
 	        //    initialState[searchSplit[0]] = searchSplit[1] || initialState[searchSplit[0]];
 	        //});
 
-	        _this4.state = {
+	        _this3.state = {
 	            klass: query.substring(0, 4) || '2010',
 	            batch: query.substring(4, 6) || '01',
 	            id: query.substring(6, 9)
 	        };
-	        return _this4;
+	        return _this3;
 	    }
 
 	    _createClass(App, [{
@@ -19951,7 +19944,7 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this5 = this;
+	            var _this4 = this;
 
 	            var _state2 = this.state;
 	            var _state2$batch = _state2.batch;
@@ -19977,7 +19970,7 @@
 	                        {
 	                            value: +klass,
 	                            onChange: function onChange(e, index, value) {
-	                                onSearchChange.call(_this5, 'klass', value);
+	                                onSearchChange.call(_this4, 'klass', value);
 	                            }
 	                            //floatingLabelText="Class"
 	                            , style: {
@@ -19997,7 +19990,7 @@
 	                        {
 	                            value: batch,
 	                            onChange: function onChange(e, index, value) {
-	                                onSearchChange.call(_this5, 'batch', value);
+	                                onSearchChange.call(_this4, 'batch', value);
 	                            }
 	                            //floatingLabelText="Batch"
 	                            , style: {
@@ -20013,26 +20006,31 @@
 	                _react2.default.createElement(
 	                    'section',
 	                    { className: 'result-wrap' },
-	                    _lodash2.default.times((_ClassSize2.default[klass] || MAX_SIZE)[batch] + 1, function (iter) {
-	                        return _react2.default.createElement(Image, {
-	                            key: '' + klass + batch + iter,
+	                    id && _react2.default.createElement(
+	                        'div',
+	                        { className: 'query-result' },
+	                        _react2.default.createElement(Image, {
+	                            key: '1' + klass + batch + id,
 	                            klass: klass,
 	                            batch: batch,
-	                            iter: iter,
-	                            selected: id && iter === +id
-	                        });
-	                    })
+	                            selected: true,
+	                            iter: +id
+	                        })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'batch-cont' },
+	                        _lodash2.default.times((_ClassSize2.default[klass] || MAX_SIZE)[batch] + 1, function (iter) {
+	                            return _react2.default.createElement(Image, {
+	                                key: '' + klass + batch + iter,
+	                                klass: klass,
+	                                batch: batch,
+	                                iter: iter
+	                            });
+	                        })
+	                    )
 	                )
 	            );
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this6 = this;
-
-	            window.setTimeout(function () {
-	                _this6.setState({ id: '' });
-	            }, 10000);
 	        }
 	    }]);
 
@@ -49192,7 +49190,7 @@
 
 
 	// module
-	exports.push([module.id, ".prof-img {\n  height: 75px;\n  width: 75px;\n  margin: 5px;\n  border: 1px solid #000; }\n  .prof-img.hide {\n    display: none; }\n\nhtml, body {\n  height: 100%;\n  width: 100%;\n  margin: 0; }\n\n#app, .app-cont {\n  height: 100%; }\n\n.header {\n  text-align: center;\n  font-size: 40px;\n  background: #3F51B5;\n  padding: 25px;\n  color: #eee; }\n\n.search-wrap {\n  text-align: center;\n  background: #C5CAE9; }\n\n.result-wrap {\n  height: calc(100% - 144px);\n  overflow: auto;\n  text-align: center;\n  position: relative;\n  padding: 75px 61px;\n  box-sizing: border-box;\n  background: #E8EAF6; }\n\n.prof-img-wrap {\n  display: inline-block;\n  position: relative; }\n  .prof-img-wrap .share-icon {\n    cursor: pointer;\n    display: none !important; }\n  .prof-img-wrap:hover, .prof-img-wrap.selected {\n    transform: scale(3);\n    z-index: 1; }\n    .prof-img-wrap:hover .share-icon, .prof-img-wrap.selected .share-icon {\n      display: block !important; }\n\n.prof-img-value {\n  position: absolute;\n  width: calc(100% - 10px);\n  bottom: 10px;\n  left: 5px;\n  color: white;\n  font-size: 8px;\n  background: rgba(0, 0, 0, 0.3);\n  text-align: left;\n  padding: 2px 5px;\n  box-sizing: border-box; }\n\n.loader {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateX(-50%) translateY(-50%); }\n", ""]);
+	exports.push([module.id, ".prof-img {\n  height: 75px;\n  width: 75px;\n  margin: 5px;\n  border: 1px solid #000; }\n  .prof-img.hide {\n    display: none; }\n\nhtml, body {\n  height: 100%;\n  width: 100%;\n  margin: 0; }\n\n#app, .app-cont {\n  height: 100%; }\n\n.header {\n  text-align: center;\n  font-size: 40px;\n  background: #3F51B5;\n  padding: 25px;\n  color: #eee; }\n\n.search-wrap {\n  text-align: center;\n  background: #C5CAE9; }\n\n.query-result {\n  border-bottom: 1px solid #ccc;\n  padding-bottom: 37.5px; }\n\n.result-wrap {\n  height: calc(100% - 144px);\n  overflow: auto;\n  text-align: center;\n  position: relative;\n  padding: 37.5px 61px;\n  box-sizing: border-box;\n  background: #E8EAF6; }\n\n.batch-cont {\n  padding: 40px 0; }\n\n.prof-img-wrap {\n  display: inline-block;\n  position: relative; }\n  .prof-img-wrap .share-icon {\n    cursor: pointer;\n    display: none !important; }\n  .prof-img-wrap:not(.selected):hover {\n    transform: scale(3);\n    z-index: 1; }\n    .prof-img-wrap:not(.selected):hover .share-icon {\n      display: block !important; }\n  .prof-img-wrap.selected .share-icon {\n    display: block !important; }\n  .prof-img-wrap.selected .prof-img {\n    height: 200px;\n    width: 200px; }\n  .prof-img-wrap.selected .prof-img-value {\n    font-size: 16px;\n    padding: 5px 8px; }\n\n.prof-img-value {\n  position: absolute;\n  width: calc(100% - 10px);\n  bottom: 10px;\n  left: 5px;\n  color: white;\n  font-size: 8px;\n  background: rgba(0, 0, 0, 0.3);\n  text-align: left;\n  padding: 2px 5px;\n  box-sizing: border-box; }\n\n.loader {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateX(-50%) translateY(-50%); }\n", ""]);
 
 	// exports
 
