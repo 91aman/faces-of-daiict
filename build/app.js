@@ -19880,7 +19880,7 @@
 	                                display: 'popup',
 	                                hashtag: '#facesOfDaiict #nostalgic',
 	                                quote: 'This is how I used to look :)',
-	                                href: 'https://91aman.github.io/faces-of-daiict/' + klass + batch + pad(iter, 3)
+	                                href: 'https://91aman.github.io/faces-of-daiict/?klass=' + klass + '&batch=' + batch + '&id=' + pad(iter, 3)
 	                            }, function (response) {});
 	                        },
 	                        style: {
