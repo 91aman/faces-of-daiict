@@ -86,7 +86,7 @@ class App extends Component {
 
         this.state = {
             klass: query.substring(0, 4) || '2010',
-            batch: query.substring(4, 6) || '11',
+            batch: query.substring(4, 6) || '01',
             id: query.substring(6, 9)
         };
     }
