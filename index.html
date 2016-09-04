@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daiict Pics</title>
+    <meta property="og:url" content="http://91aman.github.io/Daiict"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Daiict Pics"/>
+    <meta property="og:description" content="Largest collection of Id pics of all classes of daiict."/>
+    <meta property="og:image" content="http://img.collegepravesh.com/2014/06/DA-IICT.jpg"/>
+</head>
+<body>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1640961189549252',
+            xfbml      : true,
+            version    : 'v2.7'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<div id="app"></div>
+<script src="./build/app.js"></script>
+</body>
+</html>
