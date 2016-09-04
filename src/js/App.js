@@ -33,11 +33,12 @@ class Image extends Component {
     }
 
     render() {
-        const {klass, batch, iter} = this.props;
+        const {klass, batch, iter, selected} = this.props;
         return (
             this.state.error ? <span/> :
-                <div className="prof-img-wrap">
+                <div ref="container" className={classnames("prof-img-wrap", { 'selected' : selected})}>
                     <img
+                        onload = {() => {console.log('loaded')}}
                         onError={() => {this.setState({error : true})}}
                         className={classnames( "prof-img", {'hide' : this.state.error})}
                         src={`https://ecampus.daiict.ac.in/webapp/intranet/StudentPhotos/${klass}${batch}${pad(iter,3)}.jpg`}
@@ -52,11 +53,7 @@ class Image extends Component {
                                     method: 'share',
                                     display: 'popup',
                                     hashtag:'#facesOfDaiict',
-                                    quote : `https://91aman.github.io/faces-of-daiict/?klass=${klass}&batch=${batch}&id=${pad(iter,3)}`,
-                                    post : `https://91aman.github.io/faces-of-daiict/?klass=${klass}&batch=${batch}&id=${pad(iter,3)}`,
-                                    text : `https://91aman.github.io/faces-of-daiict/?klass=${klass}&batch=${batch}&id=${pad(iter,3)}`,
-                                    message : `https://91aman.github.io/faces-of-daiict/?klass=${klass}&batch=${batch}&id=${pad(iter,3)}`,
-                                    href: `https://91aman.github.io/faces-of-daiict/?klass=${klass}&batch=${batch}&id=${pad(iter,3)}`
+                                    href: `https://91aman.github.io/faces-of-daiict/?query=${klass}${batch}${pad(iter,3)}`
                                 }, function(response){});
                             }}
                             style={{
@@ -69,28 +66,29 @@ class Image extends Component {
                 </div>
         )
     }
+
+    componentDidMount(){
+        this.props.selected && window.setTimeout(() => this.refs['container'].scrollIntoView({block: "end", behavior: "smooth"}) , 1000);
+    }
 }
 
 class App extends Component {
 
     constructor(props) {
         super(props);
+        const query = window.location.search.slice(1).split('=')[1] || '';
 
-        const initialState = {
-            batch: '11',
-            klass: '2010',
-            loading: true
+        //searchParams.forEach((search) => {
+        //    const searchSplit = search.split('=');
+        //
+        //    initialState[searchSplit[0]] = searchSplit[1] || initialState[searchSplit[0]];
+        //});
+
+        this.state = {
+            klass: query.substring(0, 4) || '2010',
+            batch: query.substring(4, 6) || '11',
+            id: query.substring(6, 9)
         };
-
-        const searchParams = window.location.search.slice(1).split('&');
-
-        searchParams.forEach((search) => {
-            const searchSplit = search.split('=');
-
-            initialState[searchSplit[0]] = searchSplit[1] || initialState[searchSplit[0]];
-        });
-
-        this.state = initialState;
     }
 
     componentWillUpdate(nextProps, nextState) {
@@ -101,10 +99,11 @@ class App extends Component {
     }
 
     render() {
-        const {batch = '01', klass = '2010', loading}= this.state;
+        const {batch = '01', klass = '2010', id}= this.state;
 
         return (
             <div className="app-cont">
+                <section className="header">Faces of Daiict</section>
                 <section className="search-wrap">
                     <SelectField
                         value={+klass}
@@ -138,12 +137,24 @@ class App extends Component {
                 </section>
                 <section className="result-wrap">
                     {_.times(MAX_SIZE[batch], (iter) => {
-                        return <Image key={`${klass}${batch}${iter}`} klass={klass} batch={batch} iter={iter}/>
+                        return <Image
+                            key={`${klass}${batch}${iter}`}
+                            klass={klass}
+                            batch={batch}
+                            iter={iter}
+                            selected={id && iter === +id}
+                        />
                     })}
                 </section>
             </div>
 
         );
+    }
+
+    componentDidMount() {
+        window.setTimeout(() => {
+            this.setState({id: ''})
+        }, 10000)
     }
 }
 

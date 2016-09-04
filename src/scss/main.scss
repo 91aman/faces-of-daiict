@@ -20,16 +20,27 @@ html, body {
   height: 100%;
 }
 
+.header{
+  text-align: center;
+  font-size: 40px;
+  background: #3F51B5;
+  padding: 25px;
+  color: #eee;
+}
+
 .search-wrap {
   text-align: center;
-  padding: 20px;
+  background: #C5CAE9;
 }
 
 .result-wrap {
-  height: calc(100% - 88px);
+  height: calc(100% - 144px);
   overflow: auto;
   text-align: center;
   position: relative;
+  padding: 75px 61px;
+  box-sizing: border-box;
+  background: #E8EAF6;
 }
 
 .prof-img-wrap {
@@ -40,7 +51,7 @@ html, body {
     display: none !important;
   }
 
-  &:hover {
+  &:hover, &.selected {
     transform: scale(3);
     z-index: 1;
 

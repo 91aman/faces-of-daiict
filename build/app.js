@@ -19856,11 +19856,15 @@
 	            var klass = _props.klass;
 	            var batch = _props.batch;
 	            var iter = _props.iter;
+	            var selected = _props.selected;
 
 	            return this.state.error ? _react2.default.createElement('span', null) : _react2.default.createElement(
 	                'div',
-	                { className: 'prof-img-wrap' },
+	                { ref: 'container', className: (0, _classnames2.default)("prof-img-wrap", { 'selected': selected }) },
 	                _react2.default.createElement('img', {
+	                    onload: function onload() {
+	                        console.log('loaded');
+	                    },
 	                    onError: function onError() {
 	                        _this2.setState({ error: true });
 	                    },
@@ -19879,11 +19883,7 @@
 	                                method: 'share',
 	                                display: 'popup',
 	                                hashtag: '#facesOfDaiict',
-	                                quote: 'https://91aman.github.io/faces-of-daiict/?klass=' + klass + '&batch=' + batch + '&id=' + pad(iter, 3),
-	                                post: 'https://91aman.github.io/faces-of-daiict/?klass=' + klass + '&batch=' + batch + '&id=' + pad(iter, 3),
-	                                text: 'https://91aman.github.io/faces-of-daiict/?klass=' + klass + '&batch=' + batch + '&id=' + pad(iter, 3),
-	                                message: 'https://91aman.github.io/faces-of-daiict/?klass=' + klass + '&batch=' + batch + '&id=' + pad(iter, 3),
-	                                href: 'https://91aman.github.io/faces-of-daiict/?klass=' + klass + '&batch=' + batch + '&id=' + pad(iter, 3)
+	                                href: 'https://91aman.github.io/faces-of-daiict/?query=' + klass + batch + pad(iter, 3)
 	                            }, function (response) {});
 	                        },
 	                        style: {
@@ -19894,6 +19894,15 @@
 	                        } })
 	                )
 	            );
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var _this3 = this;
+
+	            this.props.selected && window.setTimeout(function () {
+	                return _this3.refs['container'].scrollIntoView({ block: "end", behavior: "smooth" });
+	            }, 1000);
 	        }
 	    }]);
 
@@ -19906,24 +19915,22 @@
 	    function App(props) {
 	        _classCallCheck(this, App);
 
-	        var _this3 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	        var _this4 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-	        var initialState = {
-	            batch: '11',
-	            klass: '2010',
-	            loading: true
+	        var query = window.location.search.slice(1).split('=')[1] || '';
+
+	        //searchParams.forEach((search) => {
+	        //    const searchSplit = search.split('=');
+	        //
+	        //    initialState[searchSplit[0]] = searchSplit[1] || initialState[searchSplit[0]];
+	        //});
+
+	        _this4.state = {
+	            klass: query.substring(0, 4) || '2010',
+	            batch: query.substring(4, 6) || '11',
+	            id: query.substring(6, 9)
 	        };
-
-	        var searchParams = window.location.search.slice(1).split('&');
-
-	        searchParams.forEach(function (search) {
-	            var searchSplit = search.split('=');
-
-	            initialState[searchSplit[0]] = searchSplit[1] || initialState[searchSplit[0]];
-	        });
-
-	        _this3.state = initialState;
-	        return _this3;
+	        return _this4;
 	    }
 
 	    _createClass(App, [{
@@ -19940,19 +19947,24 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this4 = this;
+	            var _this5 = this;
 
 	            var _state2 = this.state;
 	            var _state2$batch = _state2.batch;
 	            var batch = _state2$batch === undefined ? '01' : _state2$batch;
 	            var _state2$klass = _state2.klass;
 	            var klass = _state2$klass === undefined ? '2010' : _state2$klass;
-	            var loading = _state2.loading;
+	            var id = _state2.id;
 
 
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'app-cont' },
+	                _react2.default.createElement(
+	                    'section',
+	                    { className: 'header' },
+	                    'Faces of Daiict'
+	                ),
 	                _react2.default.createElement(
 	                    'section',
 	                    { className: 'search-wrap' },
@@ -19961,7 +19973,7 @@
 	                        {
 	                            value: +klass,
 	                            onChange: function onChange(e, index, value) {
-	                                onSearchChange.call(_this4, 'klass', value);
+	                                onSearchChange.call(_this5, 'klass', value);
 	                            }
 	                            //floatingLabelText="Class"
 	                            , style: {
@@ -19981,7 +19993,7 @@
 	                        {
 	                            value: batch,
 	                            onChange: function onChange(e, index, value) {
-	                                onSearchChange.call(_this4, 'batch', value);
+	                                onSearchChange.call(_this5, 'batch', value);
 	                            }
 	                            //floatingLabelText="Batch"
 	                            , style: {
@@ -19998,10 +20010,25 @@
 	                    'section',
 	                    { className: 'result-wrap' },
 	                    _lodash2.default.times(MAX_SIZE[batch], function (iter) {
-	                        return _react2.default.createElement(Image, { key: '' + klass + batch + iter, klass: klass, batch: batch, iter: iter });
+	                        return _react2.default.createElement(Image, {
+	                            key: '' + klass + batch + iter,
+	                            klass: klass,
+	                            batch: batch,
+	                            iter: iter,
+	                            selected: id && iter === +id
+	                        });
 	                    })
 	                )
 	            );
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var _this6 = this;
+
+	            window.setTimeout(function () {
+	                _this6.setState({ id: '' });
+	            }, 10000);
 	        }
 	    }]);
 
@@ -49161,7 +49188,7 @@
 
 
 	// module
-	exports.push([module.id, ".prof-img {\n  height: 75px;\n  width: 75px;\n  margin: 5px;\n  border: 1px solid #000; }\n  .prof-img.hide {\n    display: none; }\n\nhtml, body {\n  height: 100%;\n  width: 100%;\n  margin: 0; }\n\n#app, .app-cont {\n  height: 100%; }\n\n.search-wrap {\n  text-align: center;\n  padding: 20px; }\n\n.result-wrap {\n  height: calc(100% - 88px);\n  overflow: auto;\n  text-align: center;\n  position: relative; }\n\n.prof-img-wrap {\n  display: inline-block;\n  position: relative; }\n  .prof-img-wrap .share-icon {\n    cursor: pointer;\n    display: none !important; }\n  .prof-img-wrap:hover {\n    transform: scale(3);\n    z-index: 1; }\n    .prof-img-wrap:hover .share-icon {\n      display: block !important; }\n\n.prof-img-value {\n  position: absolute;\n  width: calc(100% - 10px);\n  bottom: 10px;\n  left: 5px;\n  color: white;\n  font-size: 8px;\n  background: rgba(0, 0, 0, 0.3);\n  text-align: left;\n  padding: 2px 5px;\n  box-sizing: border-box; }\n\n.loader {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateX(-50%) translateY(-50%); }\n", ""]);
+	exports.push([module.id, ".prof-img {\n  height: 75px;\n  width: 75px;\n  margin: 5px;\n  border: 1px solid #000; }\n  .prof-img.hide {\n    display: none; }\n\nhtml, body {\n  height: 100%;\n  width: 100%;\n  margin: 0; }\n\n#app, .app-cont {\n  height: 100%; }\n\n.header {\n  text-align: center;\n  font-size: 40px;\n  background: #3F51B5;\n  padding: 25px;\n  color: #eee; }\n\n.search-wrap {\n  text-align: center;\n  background: #C5CAE9; }\n\n.result-wrap {\n  height: calc(100% - 144px);\n  overflow: auto;\n  text-align: center;\n  position: relative;\n  padding: 75px 61px;\n  box-sizing: border-box;\n  background: #E8EAF6; }\n\n.prof-img-wrap {\n  display: inline-block;\n  position: relative; }\n  .prof-img-wrap .share-icon {\n    cursor: pointer;\n    display: none !important; }\n  .prof-img-wrap:hover, .prof-img-wrap.selected {\n    transform: scale(3);\n    z-index: 1; }\n    .prof-img-wrap:hover .share-icon, .prof-img-wrap.selected .share-icon {\n      display: block !important; }\n\n.prof-img-value {\n  position: absolute;\n  width: calc(100% - 10px);\n  bottom: 10px;\n  left: 5px;\n  color: white;\n  font-size: 8px;\n  background: rgba(0, 0, 0, 0.3);\n  text-align: left;\n  padding: 2px 5px;\n  box-sizing: border-box; }\n\n.loader {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateX(-50%) translateY(-50%); }\n", ""]);
 
 	// exports
 
