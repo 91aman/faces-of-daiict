@@ -5,11 +5,12 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 import ShareIcon from 'material-ui/lib/svg-icons/social/share';
 import Halogen from 'halogen';
 import classnames from 'classnames';
+import ClassSize from './ClassSize';
 
 const TOTAL_CLASS = 16,
     START_CLASS = 2001,
     MAX_SIZE = {
-        '01': 275,
+        '01': 375,
         '11': 75,
         '12': 130
     };
@@ -136,7 +137,7 @@ class App extends Component {
                     </SelectField>
                 </section>
                 <section className="result-wrap">
-                    {_.times(MAX_SIZE[batch], (iter) => {
+                    {_.times((ClassSize[klass] || MAX_SIZE)[batch] + 1, (iter) => {
                         return <Image
                             key={`${klass}${batch}${iter}`}
                             klass={klass}

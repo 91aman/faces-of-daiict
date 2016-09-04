@@ -19806,6 +19806,10 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
+	var _ClassSize = __webpack_require__(308);
+
+	var _ClassSize2 = _interopRequireDefault(_ClassSize);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19819,7 +19823,7 @@
 	var TOTAL_CLASS = 16,
 	    START_CLASS = 2001,
 	    MAX_SIZE = {
-	    '01': 275,
+	    '01': 375,
 	    '11': 75,
 	    '12': 130
 	};
@@ -20009,7 +20013,7 @@
 	                _react2.default.createElement(
 	                    'section',
 	                    { className: 'result-wrap' },
-	                    _lodash2.default.times(MAX_SIZE[batch], function (iter) {
+	                    _lodash2.default.times((_ClassSize2.default[klass] || MAX_SIZE)[batch] + 1, function (iter) {
 	                        return _react2.default.createElement(Image, {
 	                            key: '' + klass + batch + iter,
 	                            klass: klass,
@@ -49792,6 +49796,103 @@
 	};
 
 	module.exports = keyOf;
+
+/***/ },
+/* 308 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	/**
+	 * Created by amanjain on 04/09/16 at 11:52 PM.
+	 * Description :
+	 */
+
+	exports.default = {
+	    '2001': {
+	        '01': 246,
+	        '11': 0,
+	        '12': 0
+	    },
+	    '2002': {
+	        '01': 248,
+	        '11': 41,
+	        '12': 61
+	    },
+	    '2003': {
+	        '01': 273,
+	        '11': 41,
+	        '12': 60
+	    },
+	    '2004': {
+	        '01': 250,
+	        '11': 40,
+	        '12': 60
+	    },
+	    '2005': {
+	        '01': 240,
+	        '11': 39,
+	        '12': 60
+	    },
+	    '2006': {
+	        '01': 240,
+	        '11': 50,
+	        '12': 60
+	    },
+	    '2007': {
+	        '01': 240,
+	        '11': 40,
+	        '12': 60
+	    },
+	    '2008': {
+	        '01': 240,
+	        '11': 46,
+	        '12': 60
+	    },
+	    '2009': {
+	        '01': 240,
+	        '11': 49,
+	        '12': 60
+	    },
+	    '2010': {
+	        '01': 244,
+	        '11': 50,
+	        '12': 60
+	    },
+	    '2011': {
+	        '01': 245,
+	        '11': 50,
+	        '12': 90
+	    },
+	    '2012': {
+	        '01': 243,
+	        '11': 50,
+	        '12': 90
+	    },
+	    '2013': {
+	        '01': 242,
+	        '11': 50,
+	        '12': 90
+	    },
+	    '2014': {
+	        '01': 285,
+	        '11': 53,
+	        '12': 90
+	    },
+	    '2015': {
+	        '01': 251,
+	        '11': 62,
+	        '12': 94
+	    },
+	    '2016': {
+	        '01': 257,
+	        '11': 62,
+	        '12': 120
+	    }
+	};
 
 /***/ }
 /******/ ]);
