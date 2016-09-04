@@ -62,13 +62,13 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _main = __webpack_require__(299);
+	var _main = __webpack_require__(300);
 
 	var _main2 = _interopRequireDefault(_main);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var injectTapEventPlugin = __webpack_require__(303);
+	var injectTapEventPlugin = __webpack_require__(304);
 	injectTapEventPlugin();
 	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('app'));
 
@@ -19806,7 +19806,7 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _ClassSize = __webpack_require__(308);
+	var _ClassSize = __webpack_require__(299);
 
 	var _ClassSize2 = _interopRequireDefault(_ClassSize);
 
@@ -19889,7 +19889,7 @@
 	                                method: 'share',
 	                                display: 'popup',
 	                                hashtag: '#facesOfDaiict',
-	                                href: 'https://91aman.github.io/faces-of-daiict/?query=' + klass + batch + pad(iter, 3)
+	                                href: 'http://faces-of-daiict.in/?query=' + klass + batch + pad(iter, 3)
 	                            }, function (response) {});
 	                        },
 	                        style: {
@@ -20028,6 +20028,18 @@
 	                                iter: iter
 	                            });
 	                        })
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'section',
+	                    { className: 'footer' },
+	                    _react2.default.createElement('iframe', { src: 'https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Ffaces-of-daiict.in&layout=button_count&size=small&mobile_iframe=true&appId=1640961189549252&width=69&height=20', width: '69', height: '20', style: { border: 'none', overflow: 'hidden' }, scrolling: 'no', frameborder: '0', allowTransparency: 'true' }),
+	                    _react2.default.createElement(
+	                        'a',
+	                        {
+	                            className: 'twitter-share-button',
+	                            href: 'https://twitter.com/intent/tweet?text=#facesOfDaiict - http://faces-of-daiict.in' },
+	                        'Tweet'
 	                    )
 	                )
 	            );
@@ -49157,15 +49169,112 @@
 
 /***/ },
 /* 299 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	/**
+	 * Created by amanjain on 04/09/16 at 11:52 PM.
+	 * Description :
+	 */
+
+	exports.default = {
+	    '2001': {
+	        '01': 246,
+	        '11': 0,
+	        '12': 0
+	    },
+	    '2002': {
+	        '01': 248,
+	        '11': 41,
+	        '12': 61
+	    },
+	    '2003': {
+	        '01': 273,
+	        '11': 41,
+	        '12': 60
+	    },
+	    '2004': {
+	        '01': 250,
+	        '11': 40,
+	        '12': 60
+	    },
+	    '2005': {
+	        '01': 240,
+	        '11': 39,
+	        '12': 60
+	    },
+	    '2006': {
+	        '01': 240,
+	        '11': 50,
+	        '12': 60
+	    },
+	    '2007': {
+	        '01': 240,
+	        '11': 40,
+	        '12': 60
+	    },
+	    '2008': {
+	        '01': 240,
+	        '11': 46,
+	        '12': 60
+	    },
+	    '2009': {
+	        '01': 240,
+	        '11': 49,
+	        '12': 60
+	    },
+	    '2010': {
+	        '01': 244,
+	        '11': 50,
+	        '12': 60
+	    },
+	    '2011': {
+	        '01': 245,
+	        '11': 50,
+	        '12': 90
+	    },
+	    '2012': {
+	        '01': 243,
+	        '11': 50,
+	        '12': 90
+	    },
+	    '2013': {
+	        '01': 242,
+	        '11': 50,
+	        '12': 90
+	    },
+	    '2014': {
+	        '01': 285,
+	        '11': 53,
+	        '12': 90
+	    },
+	    '2015': {
+	        '01': 251,
+	        '11': 62,
+	        '12': 94
+	    },
+	    '2016': {
+	        '01': 257,
+	        '11': 62,
+	        '12': 120
+	    }
+	};
+
+/***/ },
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(300);
+	var content = __webpack_require__(301);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(302)(content, {});
+	var update = __webpack_require__(303)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -49182,21 +49291,21 @@
 	}
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(301)();
+	exports = module.exports = __webpack_require__(302)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".prof-img {\n  height: 75px;\n  width: 75px;\n  margin: 5px;\n  border: 1px solid #000; }\n  .prof-img.hide {\n    display: none; }\n\nhtml, body {\n  height: 100%;\n  width: 100%;\n  margin: 0; }\n\n#app, .app-cont {\n  height: 100%; }\n\n.header {\n  text-align: center;\n  font-size: 40px;\n  background: #3F51B5;\n  padding: 25px;\n  color: #eee; }\n\n.search-wrap {\n  text-align: center;\n  background: #C5CAE9; }\n\n.query-result {\n  border-bottom: 1px solid #ccc;\n  padding-bottom: 37.5px; }\n\n.result-wrap {\n  height: calc(100% - 144px);\n  overflow: auto;\n  text-align: center;\n  position: relative;\n  padding: 37.5px 61px;\n  box-sizing: border-box;\n  background: #E8EAF6; }\n\n.batch-cont {\n  padding: 40px 0; }\n\n.prof-img-wrap {\n  display: inline-block;\n  position: relative; }\n  .prof-img-wrap .share-icon {\n    cursor: pointer;\n    display: none !important; }\n  .prof-img-wrap:not(.selected):hover {\n    transform: scale(3);\n    z-index: 1; }\n    .prof-img-wrap:not(.selected):hover .share-icon {\n      display: block !important; }\n  .prof-img-wrap.selected .share-icon {\n    display: block !important; }\n  .prof-img-wrap.selected .prof-img {\n    height: 200px;\n    width: 200px; }\n  .prof-img-wrap.selected .prof-img-value {\n    font-size: 16px;\n    padding: 5px 8px; }\n\n.prof-img-value {\n  position: absolute;\n  width: calc(100% - 10px);\n  bottom: 10px;\n  left: 5px;\n  color: white;\n  font-size: 8px;\n  background: rgba(0, 0, 0, 0.3);\n  text-align: left;\n  padding: 2px 5px;\n  box-sizing: border-box; }\n\n.loader {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateX(-50%) translateY(-50%); }\n", ""]);
+	exports.push([module.id, ".prof-img {\n  height: 75px;\n  width: 75px;\n  margin: 5px;\n  border: 1px solid #000; }\n  .prof-img.hide {\n    display: none; }\n\nhtml, body {\n  height: 100%;\n  width: 100%;\n  margin: 0; }\n\n#app, .app-cont {\n  height: 100%; }\n\n.header {\n  text-align: center;\n  font-size: 40px;\n  background: #3F51B5;\n  padding: 25px;\n  color: #eee; }\n\n.search-wrap {\n  text-align: center;\n  background: #C5CAE9; }\n\n.query-result {\n  border-bottom: 1px solid #ccc;\n  padding-bottom: 37.5px; }\n\n.result-wrap {\n  height: calc(100% - 184px);\n  overflow: auto;\n  text-align: center;\n  position: relative;\n  padding: 37.5px 61px;\n  box-sizing: border-box;\n  background: #E8EAF6; }\n\n.batch-cont {\n  padding: 40px 0; }\n\n.footer {\n  padding: 10px;\n  text-align: center;\n  height: 40px;\n  background: #3F51B5;\n  box-sizing: border-box; }\n\n.twitter-share-button {\n  margin-left: 30px; }\n\n.prof-img-wrap {\n  display: inline-block;\n  position: relative; }\n  .prof-img-wrap .share-icon {\n    cursor: pointer;\n    display: none !important; }\n  .prof-img-wrap:not(.selected):hover {\n    transform: scale(3);\n    z-index: 1; }\n    .prof-img-wrap:not(.selected):hover .share-icon {\n      display: block !important; }\n  .prof-img-wrap.selected .share-icon {\n    display: block !important; }\n  .prof-img-wrap.selected .prof-img {\n    height: 200px;\n    width: 200px; }\n  .prof-img-wrap.selected .prof-img-value {\n    font-size: 16px;\n    padding: 5px 8px; }\n\n.prof-img-value {\n  position: absolute;\n  width: calc(100% - 10px);\n  bottom: 10px;\n  left: 5px;\n  color: white;\n  font-size: 8px;\n  background: rgba(0, 0, 0, 0.3);\n  text-align: left;\n  padding: 2px 5px;\n  box-sizing: border-box; }\n\n.loader {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateX(-50%) translateY(-50%); }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 301 */
+/* 302 */
 /***/ function(module, exports) {
 
 	/*
@@ -49252,7 +49361,7 @@
 
 
 /***/ },
-/* 302 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -49504,23 +49613,23 @@
 
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var defaultClickRejectionStrategy = __webpack_require__(304);
+	var defaultClickRejectionStrategy = __webpack_require__(305);
 
 	module.exports = function injectTapEventPlugin (strategyOverrides) {
 	  strategyOverrides = strategyOverrides || {}
 	  var shouldRejectClick = strategyOverrides.shouldRejectClick || defaultClickRejectionStrategy;
 
 	  __webpack_require__(31).injection.injectEventPluginsByName({
-	    "TapEventPlugin":       __webpack_require__(305)(shouldRejectClick)
+	    "TapEventPlugin":       __webpack_require__(306)(shouldRejectClick)
 	  });
 	};
 
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports) {
 
 	module.exports = function(lastTouchEvent, clickTimestamp) {
@@ -49531,7 +49640,7 @@
 
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -49559,10 +49668,10 @@
 	var EventPluginUtils = __webpack_require__(33);
 	var EventPropagators = __webpack_require__(73);
 	var SyntheticUIEvent = __webpack_require__(87);
-	var TouchEventUtils = __webpack_require__(306);
+	var TouchEventUtils = __webpack_require__(307);
 	var ViewportMetrics = __webpack_require__(38);
 
-	var keyOf = __webpack_require__(307);
+	var keyOf = __webpack_require__(308);
 	var topLevelTypes = EventConstants.topLevelTypes;
 
 	var isStartish = EventPluginUtils.isStartish;
@@ -49708,7 +49817,7 @@
 
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports) {
 
 	/**
@@ -49756,7 +49865,7 @@
 
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports) {
 
 	/**
@@ -49794,103 +49903,6 @@
 	};
 
 	module.exports = keyOf;
-
-/***/ },
-/* 308 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	/**
-	 * Created by amanjain on 04/09/16 at 11:52 PM.
-	 * Description :
-	 */
-
-	exports.default = {
-	    '2001': {
-	        '01': 246,
-	        '11': 0,
-	        '12': 0
-	    },
-	    '2002': {
-	        '01': 248,
-	        '11': 41,
-	        '12': 61
-	    },
-	    '2003': {
-	        '01': 273,
-	        '11': 41,
-	        '12': 60
-	    },
-	    '2004': {
-	        '01': 250,
-	        '11': 40,
-	        '12': 60
-	    },
-	    '2005': {
-	        '01': 240,
-	        '11': 39,
-	        '12': 60
-	    },
-	    '2006': {
-	        '01': 240,
-	        '11': 50,
-	        '12': 60
-	    },
-	    '2007': {
-	        '01': 240,
-	        '11': 40,
-	        '12': 60
-	    },
-	    '2008': {
-	        '01': 240,
-	        '11': 46,
-	        '12': 60
-	    },
-	    '2009': {
-	        '01': 240,
-	        '11': 49,
-	        '12': 60
-	    },
-	    '2010': {
-	        '01': 244,
-	        '11': 50,
-	        '12': 60
-	    },
-	    '2011': {
-	        '01': 245,
-	        '11': 50,
-	        '12': 90
-	    },
-	    '2012': {
-	        '01': 243,
-	        '11': 50,
-	        '12': 90
-	    },
-	    '2013': {
-	        '01': 242,
-	        '11': 50,
-	        '12': 90
-	    },
-	    '2014': {
-	        '01': 285,
-	        '11': 53,
-	        '12': 90
-	    },
-	    '2015': {
-	        '01': 251,
-	        '11': 62,
-	        '12': 94
-	    },
-	    '2016': {
-	        '01': 257,
-	        '11': 62,
-	        '12': 120
-	    }
-	};
 
 /***/ }
 /******/ ]);

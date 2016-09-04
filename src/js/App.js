@@ -39,7 +39,7 @@ class Image extends Component {
             this.state.error ? <span/> :
                 <div ref="container" className={classnames("prof-img-wrap", { 'selected' : selected})}>
                     <img
-                        onload = {() => {console.log('loaded')}}
+                        onload={() => {console.log('loaded')}}
                         onError={() => {this.setState({error : true})}}
                         className={classnames( "prof-img", {'hide' : this.state.error})}
                         src={`https://ecampus.daiict.ac.in/webapp/intranet/StudentPhotos/${klass}${batch}${pad(iter,3)}.jpg`}
@@ -54,7 +54,7 @@ class Image extends Component {
                                     method: 'share',
                                     display: 'popup',
                                     hashtag:'#facesOfDaiict',
-                                    href: `https://91aman.github.io/faces-of-daiict/?query=${klass}${batch}${pad(iter,3)}`
+                                    href: `http://faces-of-daiict.in/?query=${klass}${batch}${pad(iter,3)}`
                                 }, function(response){});
                             }}
                             style={{
@@ -136,12 +136,12 @@ class App extends Component {
                     {
                         id && <div className="query-result">
                             <Image
-                            key={`1${klass}${batch}${id}`}
-                            klass={klass}
-                            batch={batch}
-                            selected
-                            iter={+id}
-                        /></div>
+                                key={`1${klass}${batch}${id}`}
+                                klass={klass}
+                                batch={batch}
+                                selected
+                                iter={+id}
+                            /></div>
                     }
                     <div className="batch-cont">{_.times((ClassSize[klass] || MAX_SIZE)[batch] + 1, (iter) => {
                         return <Image
@@ -151,6 +151,14 @@ class App extends Component {
                             iter={iter}
                         />
                     })}</div>
+                </section>
+                <section className="footer">
+                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Ffaces-of-daiict.in&layout=button_count&size=small&mobile_iframe=true&appId=1640961189549252&width=69&height=20" width="69" height="20" style={{border:'none',overflow:'hidden'}} scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                    <a
+                        className="twitter-share-button"
+                       href="https://twitter.com/intent/tweet?text=#facesOfDaiict - http://faces-of-daiict.in">
+                        Tweet
+                    </a>
                 </section>
             </div>
 
