@@ -19887,7 +19887,7 @@
 	                            console.log('clicked', klass, batch, iter);
 	                            FB.ui({
 	                                method: 'share',
-	                                display: 'popup',
+	                                mobile_iframe: 'true',
 	                                hashtag: '#facesOfDaiict',
 	                                href: 'http://faces-of-daiict.in/?query=' + klass + batch + pad(iter, 3)
 	                            }, function (response) {});
