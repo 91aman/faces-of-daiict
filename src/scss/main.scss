@@ -1,13 +1,12 @@
 .prof-img {
-  height: 75px;
-  width: 75px;
+  height: 100px;
+  width: 100px;
   margin: 5px;
   border: 1px solid #000;
 
   &.hide {
     display: none;
   }
-
 }
 
 html, body {
@@ -22,9 +21,9 @@ html, body {
 
 .header {
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
   background: #3F51B5;
-  padding: 25px;
+  padding: 10px;
   color: #eee;
 }
 
@@ -35,21 +34,18 @@ html, body {
 
 .query-result {
   border-bottom: 1px solid #ccc;
-  padding-bottom: 37.5px;
+  padding-bottom: 22.5px;
+  margin-bottom: 22.5px;
 }
 
 .result-wrap {
-  height: calc(100% - 184px);
+  height: calc(100% - 144px);
   overflow: auto;
   text-align: center;
   position: relative;
-  padding: 37.5px 61px;
+  padding: 22.5px 0;
   box-sizing: border-box;
   background: #E8EAF6;
-}
-
-.batch-cont {
-  padding: 40px 0;
 }
 
 .footer {
@@ -69,26 +65,12 @@ html, body {
   position: relative;
   .share-icon {
     cursor: pointer;
-    display: none !important;
-  }
-
-  &:not(.selected):hover {
-    transform: scale(3);
-    z-index: 1;
-
-    .share-icon {
-      display: block !important;
-    }
   }
 
   &.selected {
-    .share-icon {
-      display: block !important;
-    }
-
     .prof-img {
-      height: 200px;
-      width: 200px;
+      height: 250px;
+      width: 250px;
     }
 
     .prof-img-value {
@@ -111,9 +93,45 @@ html, body {
   box-sizing: border-box;
 }
 
-.loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+@media screen and (min-width: 900px) {
+
+  .header {
+    font-size: 40px;
+    padding: 15px;
+  }
+
+  .query-result {
+    padding: 20px 0 40px 0;
+    margin-bottom: 0;
+  }
+
+  .result-wrap {
+    height: calc(100% - 164px);
+    padding: 22.5px 61px;
+  }
+
+  .batch-cont {
+    padding: 40px 0;
+  }
+
+  .prof-img-wrap {
+    .share-icon {
+      display: none !important;
+    }
+
+    &:not(.selected):hover {
+      transform: scale(2);
+      z-index: 1;
+
+      .share-icon {
+        display: block !important;
+      }
+    }
+
+    &.selected {
+      .share-icon {
+        display: block !important;
+      }
+    }
+  }
 }

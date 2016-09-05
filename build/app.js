@@ -19939,6 +19939,7 @@
 
 	            if (nextState.batch !== batch || nextState.klass !== klass) {
 	                window.stop();
+	                this.refs['result-wrap'].scrollTop = 0;
 	            }
 	        }
 	    }, {
@@ -20005,7 +20006,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'section',
-	                    { className: 'result-wrap' },
+	                    { ref: 'result-wrap', className: (0, _classnames2.default)("result-wrap", { 'withResult': id }) },
 	                    id && _react2.default.createElement(
 	                        'div',
 	                        { className: 'query-result' },
@@ -49299,7 +49300,7 @@
 
 
 	// module
-	exports.push([module.id, ".prof-img {\n  height: 75px;\n  width: 75px;\n  margin: 5px;\n  border: 1px solid #000; }\n  .prof-img.hide {\n    display: none; }\n\nhtml, body {\n  height: 100%;\n  width: 100%;\n  margin: 0; }\n\n#app, .app-cont {\n  height: 100%; }\n\n.header {\n  text-align: center;\n  font-size: 40px;\n  background: #3F51B5;\n  padding: 25px;\n  color: #eee; }\n\n.search-wrap {\n  text-align: center;\n  background: #C5CAE9; }\n\n.query-result {\n  border-bottom: 1px solid #ccc;\n  padding-bottom: 37.5px; }\n\n.result-wrap {\n  height: calc(100% - 184px);\n  overflow: auto;\n  text-align: center;\n  position: relative;\n  padding: 37.5px 61px;\n  box-sizing: border-box;\n  background: #E8EAF6; }\n\n.batch-cont {\n  padding: 40px 0; }\n\n.footer {\n  padding: 10px;\n  text-align: center;\n  height: 40px;\n  background: #3F51B5;\n  box-sizing: border-box; }\n\n.twitter-share-button {\n  margin-left: 30px; }\n\n.prof-img-wrap {\n  display: inline-block;\n  position: relative; }\n  .prof-img-wrap .share-icon {\n    cursor: pointer;\n    display: none !important; }\n  .prof-img-wrap:not(.selected):hover {\n    transform: scale(3);\n    z-index: 1; }\n    .prof-img-wrap:not(.selected):hover .share-icon {\n      display: block !important; }\n  .prof-img-wrap.selected .share-icon {\n    display: block !important; }\n  .prof-img-wrap.selected .prof-img {\n    height: 200px;\n    width: 200px; }\n  .prof-img-wrap.selected .prof-img-value {\n    font-size: 16px;\n    padding: 5px 8px; }\n\n.prof-img-value {\n  position: absolute;\n  width: calc(100% - 10px);\n  bottom: 10px;\n  left: 5px;\n  color: white;\n  font-size: 8px;\n  background: rgba(0, 0, 0, 0.3);\n  text-align: left;\n  padding: 2px 5px;\n  box-sizing: border-box; }\n\n.loader {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateX(-50%) translateY(-50%); }\n", ""]);
+	exports.push([module.id, ".prof-img {\n  height: 100px;\n  width: 100px;\n  margin: 5px;\n  border: 1px solid #000; }\n  .prof-img.hide {\n    display: none; }\n\nhtml, body {\n  height: 100%;\n  width: 100%;\n  margin: 0; }\n\n#app, .app-cont {\n  height: 100%; }\n\n.header {\n  text-align: center;\n  font-size: 30px;\n  background: #3F51B5;\n  padding: 10px;\n  color: #eee; }\n\n.search-wrap {\n  text-align: center;\n  background: #C5CAE9; }\n\n.query-result {\n  border-bottom: 1px solid #ccc;\n  padding-bottom: 22.5px;\n  margin-bottom: 22.5px; }\n\n.result-wrap {\n  height: calc(100% - 144px);\n  overflow: auto;\n  text-align: center;\n  position: relative;\n  padding: 22.5px 0;\n  box-sizing: border-box;\n  background: #E8EAF6; }\n\n.footer {\n  padding: 10px;\n  text-align: center;\n  height: 40px;\n  background: #3F51B5;\n  box-sizing: border-box; }\n\n.twitter-share-button {\n  margin-left: 30px; }\n\n.prof-img-wrap {\n  display: inline-block;\n  position: relative; }\n  .prof-img-wrap .share-icon {\n    cursor: pointer; }\n  .prof-img-wrap.selected .prof-img {\n    height: 250px;\n    width: 250px; }\n  .prof-img-wrap.selected .prof-img-value {\n    font-size: 16px;\n    padding: 5px 8px; }\n\n.prof-img-value {\n  position: absolute;\n  width: calc(100% - 10px);\n  bottom: 10px;\n  left: 5px;\n  color: white;\n  font-size: 8px;\n  background: rgba(0, 0, 0, 0.3);\n  text-align: left;\n  padding: 2px 5px;\n  box-sizing: border-box; }\n\n@media screen and (min-width: 900px) {\n  .header {\n    font-size: 40px;\n    padding: 15px; }\n  .query-result {\n    padding: 20px 0 40px 0;\n    margin-bottom: 0; }\n  .result-wrap {\n    height: calc(100% - 164px);\n    padding: 22.5px 61px; }\n  .batch-cont {\n    padding: 40px 0; }\n  .prof-img-wrap .share-icon {\n    display: none !important; }\n  .prof-img-wrap:not(.selected):hover {\n    transform: scale(2);\n    z-index: 1; }\n    .prof-img-wrap:not(.selected):hover .share-icon {\n      display: block !important; }\n  .prof-img-wrap.selected .share-icon {\n    display: block !important; } }\n", ""]);
 
 	// exports
 

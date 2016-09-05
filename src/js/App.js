@@ -92,6 +92,7 @@ class App extends Component {
         const {batch,klass } = this.state;
         if (nextState.batch !== batch || nextState.klass !== klass) {
             window.stop();
+            this.refs['result-wrap'].scrollTop = 0;
         }
     }
 
@@ -132,7 +133,7 @@ class App extends Component {
                         <MenuItem key={'12'} value={'12'} primaryText="Mscit"/>
                     </SelectField>
                 </section>
-                <section className="result-wrap">
+                <section ref="result-wrap" className={classnames("result-wrap", {'withResult' : id})}>
                     {
                         id && <div className="query-result">
                             <Image
