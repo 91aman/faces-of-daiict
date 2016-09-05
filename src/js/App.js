@@ -59,8 +59,6 @@ class Image extends Component {
                             }}
                             style={{
                             float: 'right',
-                            height: selected? '18px' :'9px',
-                            width: selected ? '18px' :'9px',
                             fill: 'white'
                         }}/>
                     </div>

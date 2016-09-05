@@ -65,6 +65,8 @@ html, body {
   position: relative;
   .share-icon {
     cursor: pointer;
+    height:15px !important;
+    width: 15px !important;
   }
 
   &.selected {
@@ -86,7 +88,7 @@ html, body {
   bottom: 10px;
   left: 5px;
   color: white;
-  font-size: 8px;
+  font-size: 15px;
   background: rgba(0, 0, 0, 0.3);
   text-align: left;
   padding: 2px 5px;
@@ -114,9 +116,15 @@ html, body {
     padding: 40px 0;
   }
 
+  .prof-img-value{
+    font-size: 8px;
+  }
+
   .prof-img-wrap {
     .share-icon {
       display: none !important;
+      height:9px !important;
+      width: 9px !important;
     }
 
     &:not(.selected):hover {
@@ -131,6 +139,8 @@ html, body {
     &.selected {
       .share-icon {
         display: block !important;
+        height:18px !important;
+        width: 18px !important;
       }
     }
   }
