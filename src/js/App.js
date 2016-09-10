@@ -1,8 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import _ from 'lodash';
+import $ from 'jquery';
 import SelectField from 'material-ui/lib/SelectField';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import ShareIcon from 'material-ui/lib/svg-icons/social/share';
+import SadIcon from 'material-ui/lib/svg-icons/social/mood-bad';
 import Halogen from 'halogen';
 import classnames from 'classnames';
 import ClassSize from './ClassSize';
@@ -24,7 +26,7 @@ function onSearchChange(key, value) {
     this.setState({[key]: value, id: undefined});
 }
 
-class Image extends Component {
+class ImageComp extends Component {
     constructor(props) {
         super(props);
 
@@ -67,22 +69,56 @@ class Image extends Component {
     }
 }
 
+function check() {
+    const sprite = new Image();
+
+    sprite.onload = () => {
+        this.setState({ecampus: 'ok'});
+    };
+
+    sprite.onerror = () => {
+        this.setState({ecampus: 'error'});
+    };
+
+    sprite.src = 'https://ecampus.daiict.ac.in/webapp/intranet/StudentPhotos/201001231.jpg';
+}
+
+const ErrorComponent = () => {
+    return (
+        <div className="error-cont">
+            <SadIcon
+                style={{
+            height:'100px',
+            width :'100px',
+            fill :'#3F51B5'
+           }}
+            />
+            <div>
+                <p>The source of the images is <a href="https://ecampus.daiict.ac.in/webapp/intranet/index.jsp"
+                                                  target="_blank">ecampus.daiict.in</a></p>
+                <p>Unfortunately due high volume of interaction on this site, the images on the ecampus site have now suddenly
+                    stop loading. Either there is some issue with ecampus or they have removed these images.
+                </p>
+
+                <p>Inconvenience caused is highly regretted.</p>
+            </div>
+        </div>
+    )
+};
+
+
 class App extends Component {
 
     constructor(props) {
         super(props);
         const query = window.location.search.slice(1).split('=')[1] || '';
 
-        //searchParams.forEach((search) => {
-        //    const searchSplit = search.split('=');
-        //
-        //    initialState[searchSplit[0]] = searchSplit[1] || initialState[searchSplit[0]];
-        //});
-
+        check.call(this);
         this.state = {
             klass: query.substring(0, 4) || '2010',
             batch: query.substring(4, 6) || '01',
-            id: query.substring(6, 9)
+            id: query.substring(6, 9),
+            ecampus: 'checking'
         };
     }
 
@@ -95,7 +131,37 @@ class App extends Component {
     }
 
     render() {
-        const {batch = '01', klass = '2010', id}= this.state;
+        const {batch = '01', klass = '2010', id, ecampus}= this.state;
+
+        let resultEl = (
+            <Halogen.BounceLoader className="loader" color={'#C5CAE9'}/>
+        );
+
+        if (ecampus === 'error') {
+            resultEl = <ErrorComponent/>;
+        } else if (ecampus === 'ok') {
+            resultEl = (<div>
+                {
+                    id && <div className="query-result">
+                        <ImageComp
+                            key={`1${klass}${batch}${id}`}
+                            klass={klass}
+                            batch={batch}
+                            selected
+                            iter={+id}
+                        /></div>
+                }
+                <div className="batch-cont">{_.times((ClassSize[klass] || MAX_SIZE)[batch] + 1, (iter) => {
+                    return <ImageComp
+                        key={`${klass}${batch}${iter}`}
+                        klass={klass}
+                        batch={batch}
+                        iter={iter}
+                    />
+                })}</div>
+            </div>)
+        }
+
 
         return (
             <div className="app-cont">
@@ -132,30 +198,16 @@ class App extends Component {
                     </SelectField>
                 </section>
                 <section ref="result-wrap" className={classnames("result-wrap", {'withResult' : id})}>
-                    {
-                        id && <div className="query-result">
-                            <Image
-                                key={`1${klass}${batch}${id}`}
-                                klass={klass}
-                                batch={batch}
-                                selected
-                                iter={+id}
-                            /></div>
-                    }
-                    <div className="batch-cont">{_.times((ClassSize[klass] || MAX_SIZE)[batch] + 1, (iter) => {
-                        return <Image
-                            key={`${klass}${batch}${iter}`}
-                            klass={klass}
-                            batch={batch}
-                            iter={iter}
-                        />
-                    })}</div>
+                    {resultEl}
                 </section>
                 <section className="footer">
-                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Ffaces-of-daiict.in&layout=button_count&size=small&mobile_iframe=true&appId=1640961189549252&width=69&height=20" width="69" height="20" style={{border:'none',overflow:'hidden'}} scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                    <iframe
+                        src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Ffaces-of-daiict.in&layout=button_count&size=small&mobile_iframe=true&appId=1640961189549252&width=69&height=20"
+                        width="69" height="20" style={{border:'none',overflow:'hidden'}} scrolling="no" frameborder="0"
+                        allowTransparency="true"></iframe>
                     <a
                         className="twitter-share-button"
-                       href="https://twitter.com/intent/tweet?text=#facesOfDaiict - http://faces-of-daiict.in">
+                        href="https://twitter.com/intent/tweet?text=#facesOfDaiict - http://faces-of-daiict.in">
                         Tweet
                     </a>
                 </section>

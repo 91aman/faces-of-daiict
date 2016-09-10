@@ -82,6 +82,23 @@ html, body {
   }
 }
 
+.loader{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+.error-cont{
+  width: 100%;
+  max-width: 500px;
+  padding: 0 30px;
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .prof-img-value {
   position: absolute;
   width: calc(100% - 10px);
@@ -118,6 +135,10 @@ html, body {
 
   .prof-img-value{
     font-size: 8px;
+  }
+
+  .error-cont{
+    top: 10%;
   }
 
   .prof-img-wrap {
